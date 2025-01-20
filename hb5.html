@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>豬你生日快樂</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* 增加邊框 */
+        .bordered {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        /* 文字置中 */
+        .center-text {
+            text-align: center;
+        }
+
+        /* RWD: 手機上顯示整排，桌面上顯示兩列 */
+        @media (max-width: 767px) {
+            .wish-options {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .wish-options {
+                display: inline-block;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row mb-3">
+            <div class="col">
+                <form class="form-floating">
+                    <input type="text" class="form-control" id="nameInput" placeholder="輸入你的大名">
+                    <label for="nameInput">輸入你的大名</label>
+                </form>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col bordered">
+                <div class="form-check form-check-inline wish-options">
+                    <input class="form-check-input" type="radio" name="wishOptions" id="radioYouth" value="青春">
+                    <label class="form-check-label" for="radioYouth">你要青春</label>
+                </div>
+            </div>
+            <div class="col bordered">
+                <div class="form-check form-check-inline wish-options">
+                    <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="美麗">
+                    <label class="form-check-label" for="radioBeauty">還是美麗</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col bordered">
+                <p id="birthdayMessage" class="center-text" style="display: none;">Hi, xxx, 祝你生日大青春/美麗</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        const radioYouth = document.getElementById('radioYouth');
+        const radioBeauty = document.getElementById('radioBeauty');
+        const birthdayMessage = document.getElementById('birthdayMessage');
+
+        function updateMessage() {
+            const name = nameInput.value.trim(); // 獲取輸入的名字
+            const isRadioChecked = radioYouth.checked || radioBeauty.checked; // 檢查是否有選擇 Radio
+
+            if (name && isRadioChecked) {
+                // 若名字與 Radio 都已完成，顯示文字區塊
+                birthdayMessage.style.display = 'block';
+
+                // 設定祝福文字
+                let wish = radioYouth.checked ? '青春無敵' : '美麗無限';
+                birthdayMessage.textContent = `Hi, ${name}, 祝你生日大${wish}`;
+            } else {
+                // 若條件未滿足，隱藏文字區塊
+                birthdayMessage.style.display = 'none';
+            }
+        }
+
+        // 綁定事件
+        nameInput.addEventListener('input', updateMessage);
+        radioYouth.addEventListener('change', updateMessage);
+        radioBeauty.addEventListener('change', updateMessage);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN6n6JIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
