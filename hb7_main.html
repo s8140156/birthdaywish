@@ -13,6 +13,7 @@
             border: 1px solid transparent;
             padding: 15px;
             border-radius: 5px;
+            /* background-color: burlywood; */
         }
 
         .bordered {
@@ -21,7 +22,7 @@
             border-radius: 5px;
         }
 
-        
+
 
         /* 文字置中 */
         .center-text {
@@ -34,12 +35,31 @@
                 display: block;
                 width: 100%;
             }
+
+            .wish-options-container {
+                flex-direction: column;
+                /* 強制垂直排列 */
+                /* align-items: center; */
+                /* 置中對齊 */
+            }
         }
 
         @media (min-width: 768px) {
-            .wish-options {
+            .wish-options-1 {
                 display: inline-block;
-                width: auto;
+                width: 10%;
+                /* text-align: center; */
+            }
+            .wish-options-2 {
+                display: inline-block;
+                width: 32%;
+            }
+            .wish-options-container {
+                flex-direction: row;
+                display: flex;
+                justify-content: space-evenly;
+                width:100%;
+                /* 水平排列 */
             }
         }
     </style>
@@ -51,21 +71,26 @@
             <div class="col bordered-1">
                 <form class="form-floating">
                     <input type="text" class="form-control" id="nameInput" placeholder="輸入你的大名">
-                    <label for="nameInput">輸入你的大名</label>
+                    <label for="nameInput">你的大名</label>
                 </form>
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-md-6 col-12 bordered mb-3 mx-0.5 px-3">
-                <div class="form-check form-check-inline wish-options">
-                    <input class="form-check-input" type="radio" name="wishOptions" id="radioYouth" value="青春">
-                    <label class="form-check-label" for="radioYouth">你要青春</label>
+        <div class="row mb-3 wish-options-container" >
+            <div class="col-md-4 col-12 bordered-1 my-1 mx-0.5 px-3" >
+                <div class="form-check form-check-inline wish-option-1">
+                    <label class="form-check-label" for="radioYouth">請問你要</label>
                 </div>
             </div>
-            <div class="col-md-6 col-12 bordered mb-3 mx-0.5 px-3">
-                <div class="form-check form-check-inline wish-options">
+            <div class="col-md-4 col-12 bordered my-1 mx-0.5 px-3 wish-options-2" >
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="wishOptions" id="radioYouth" value="青春">
+                    <label class="form-check-label" for="radioYouth">青春永駐</label>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 bordered my-1 mx-0.5 px-3 wish-options-2" >
+                <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="美麗">
-                    <label class="form-check-label" for="radioBeauty">還是美麗</label>
+                    <label class="form-check-label" for="radioBeauty">美麗無限</label>
                 </div>
             </div>
         </div>
