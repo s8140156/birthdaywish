@@ -53,7 +53,7 @@
 
             .wish-options-2 {
                 display: inline-block;
-                width: 24%;
+                width: 20%;
             }
 
             .wish-options-container {
@@ -78,29 +78,41 @@
             </div>
         </div>
         <div class="row mb-3 wish-options-container">
-            <div class="col-md-3 col-12 bordered-1 my-1 mx-0.5 px-3">
+            <div class="col-md-2 col-12 bordered-1 my-1 mx-0.5 px-3">
                 <div class="form-check form-check-inline wish-option-1">
                     <label class="form-check-label" for="radioYouth">請問你要</label>
                 </div>
             </div>
-            <div class="col-md-3 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
+            <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="wishOptions" id="radioYouth" value="青春">
                     <label class="form-check-label" for="radioYouth">青春永駐</label>
                 </div>
             </div>
-            <div class="col-md-3 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
+            <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="美麗">
                     <label class="form-check-label" for="radioBeauty">美麗無限</label>
                 </div>
             </div>
-            <div class="col-md-3 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
+            <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="財富">
+                    <label class="form-check-label" for="radioBeauty">原來財是你</label>
+                </div>
+            </div>
+            <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="皆非">
+                    <label class="form-check-label" for="radioBeauty">以上皆非</label>
+                </div>
+            </div>
+            <!-- <div class="col-md-3 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="健康">
                     <label class="form-check-label" for="radioBeauty">健康大寶貝</label>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col bordered">
@@ -157,19 +169,22 @@
                 let wish = '';
                 switch (selectedValue) {
                     case '青春':
-                        wish = '青春無敵';
+                        wish = '青春大無敵, 早餐店老闆娘只會問：妹妹今天想吃什麼？';
                         break;
                     case '美麗':
-                        wish = '美麗無限';
+                        wish = '美麗無上限, 路過的女生都會驚呼：是仙女下凡嗎？';
                         break;
-                    case '健康':
-                        wish = '健康長壽';
+                    case '財富':
+                        wish = '財源滾滾來, 走在路上硬幣鈔票都會滾到你身旁！';
                         break;
+                    case '皆非':
+                    wish = '沒有這個選項啦~請重新選擇喔~ XD';
+                    break;
                     default:
                         wish = '未知的祝福';
                 }
 
-                birthdayMessage.textContent = `Hi, ${name}, 祝你生日大${wish}`;
+                birthdayMessage.textContent = `Hi, ${name}寶貝, 祝妳生日${wish}`;
             } else {
                 // 若條件未滿足，隱藏文字區塊
                 birthdayMessage.style.display = 'none';
