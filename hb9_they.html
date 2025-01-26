@@ -8,23 +8,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        /* 增加邊框 */
+
+        body{
+            background-color: lightgray;
+        }
+        /* 邊框 名字input/ 選項標題 */
         .bordered-1 {
             border: 1px solid transparent;
-            padding: 15px;
+            padding: 10px;
             border-radius: 5px;
             /* background-color: burlywood; */
         }
 
+        /* 邊框 radio */
         .bordered {
             border: 1px solid #ccc;
-            padding: 15px;
+            padding: 10px;
             border-radius: 5px;
         }
 
         /* 文字置中 */
         .center-text {
             text-align: center;
+            font-size: x-large;
         }
 
         /* RWD: 桌面顯示兩個併排，手機顯示美麗選項在下一行 */
@@ -72,6 +78,11 @@
 
 <body>
     <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <p class="center-text">只說真話的生日願望祝福器</p>
+            </div>
+        </div>
         <div class="row mb-3">
             <div class="col bordered-1">
                 <form class="form-floating">
@@ -81,7 +92,7 @@
             </div>
         </div>
         <div class="row mb-3 wish-options-container">
-            <div class="col-md-2 col-12 bordered-1 my-1 mx-0.5 px-3">
+            <div class="col-md-2 col-12 bordered-1 my-1 mx-0.5">
                 <div class="form-check form-check-inline wish-option-1">
                     <label class="form-check-label" for="genderOptions">請問你是</label>
                 </div>
@@ -100,21 +111,21 @@
             </div>
         </div>
         <div class="row mb-3 wish-options-container">
-            <div class="col-md-2 col-12 bordered-1 my-1 mx-0.5 px-3">
+            <div class="col-md-2 col-12 bordered-1 my-1 mx-0.5">
                 <div class="form-check form-check-inline wish-option-1">
-                    <label class="form-check-label" for="radioYouth">請問你要</label>
+                    <label class="form-check-label" for="radioYouth">請問你想要</label>
                 </div>
             </div>
             <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="wishOptions" id="radioYouth" value="青春">
-                    <label class="form-check-label" for="radioYouth">青春永駐</label>
+                    <label class="form-check-label" for="radioYouth">青春永蛀</label>
                 </div>
             </div>
             <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="美麗">
-                    <label class="form-check-label" for="radioBeauty">美麗無限</label>
+                    <label class="form-check-label" for="radioBeauty">美麗無下限</label>
                 </div>
             </div>
             <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
@@ -198,24 +209,28 @@
 
                 // 根據選中的值設定祝福文字
                 let finalWish = '';
+                let prefix = '';
                 switch (wish) {
                     case '青春':
-                        finalWish = gender === '男' ? '青春無敵青春痘狂長, 春風少年兄低頭吃便當' : '青春大無敵, 早餐店老闆娘只會問：妹妹今天想吃什麼？';
+                        prefix = gender === '男' ? '(一日限定)後面帥, 側面更帥, 正面不能看的' : '寶貝兒 ';
+                        finalWish = gender === '男' ? '青春無敵青春痘狂長, 春風少年兄低頭吃便當' : '生日青春大無敵, 早餐店老闆娘只會問：妹妹今天想吃什麼？';
                         break;
                     case '美麗':
-                        finalWish = gender === '男' ? '美到凍美掉, 帥到掉渣' : '美麗無上限, 路過的女生都會驚呼：是仙女下凡嗎？';
+                        prefix = gender === '男' ? '(一日限定)側面帥, 正面超級帥, 後面不能看的' : '寶貝兒 ';
+                        finalWish = gender === '男' ? '祝福你以後化妝極效率 坐到竹圍眉毛也不用畫了 因為已經紋眉' : '美麗無上限, 路過的女生都會驚呼：是仙女下凡嗎？';
                         break;
                     case '財富':
-                        finalWish = gender === '男' ? '財富滾滾，成功吸精小能手' : '財源滾滾來, 走在路上硬幣鈔票都會滾到你身旁！';
+                        prefix = gender === '男' ? '(一日限定)改善社會風氣風靡萬千少女玉樹臨風的' : '寶貝兒 ';
+                        finalWish = gender === '男' ? '祝福你今年 錢跟財 不要只各擁有一半(貝戈戈的人生 母湯啊~)' : '祝福你財源滾滾來, 走在路上硬幣鈔票都會滾到你身旁！';
                         break;
                     case '皆非':
-                        finalWish = '選了皆非，是想要什麼神秘祝福啊？';
+                        finalWish = '哪來那麼多願望, 當我神燈精靈ni @@ ？';
                         break;
                     default:
                         finalWish = '未知的祝福';
                 }
 
-                birthdayMessage.textContent = `Hi, ${name}, 祝妳/你生日${finalWish}`;
+                birthdayMessage.textContent = `Hi, ${prefix} ${name}, ${finalWish}`;
             } else {
                 // 若條件未滿足，隱藏文字區塊
                 birthdayMessage.style.display = 'none';
