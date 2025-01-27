@@ -119,13 +119,13 @@
             <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="wishOptions" id="radioYouth" value="青春">
-                    <label class="form-check-label" for="radioYouth">青春永蛀</label>
+                    <label class="form-check-label" for="radioYouth">青春滿點</label>
                 </div>
             </div>
             <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="美麗">
-                    <label class="form-check-label" for="radioBeauty">美麗無下限</label>
+                    <input class="form-check-input" type="radio" name="wishOptions" id="radioBeauty" value="智慧">
+                    <label class="form-check-label" for="radioBeauty">才智雙全</label>
                 </div>
             </div>
             <div class="col-md-2 col-12 bordered my-1 mx-0.5 px-3 wish-options-2">
@@ -183,7 +183,6 @@
 
 
         // 綁定事件
-
         function updateMessage() {
             const name = nameInput.value.trim(); // 獲取輸入的名字
             let gender = ''; // 預設性別為空
@@ -213,15 +212,15 @@
                 switch (wish) {
                     case '青春':
                         prefix = gender === '男' ? '(一日限定)後面帥, 側面更帥, 正面不能看的' : '寶貝兒 ';
-                        finalWish = gender === '男' ? '青春無敵青春痘狂長, 春風少年兄低頭吃便當' : '生日青春大無敵, 早餐店老闆娘只會問：妹妹今天想吃什麼？';
+                        finalWish = gender === '男' ? '祝福你獲得開運紋眉 以後坐到竹圍眉毛也不用畫了~效~率~' : '願妳每天開開心心, 與活潑女兒阿樂越活越年輕, 生日快樂, 永遠青春無敵^^！';
                         break;
-                    case '美麗':
-                        prefix = gender === '男' ? '(一日限定)側面帥, 正面超級帥, 後面不能看的' : '寶貝兒 ';
-                        finalWish = gender === '男' ? '祝福你以後化妝極效率 坐到竹圍眉毛也不用畫了 因為已經紋眉' : '美麗無上限, 路過的女生都會驚呼：是仙女下凡嗎？';
+                    case '智慧':
+                        prefix = gender === '男' ? '(一日限定)成熟穩重, 如同陳年佳釀, 越品越覺醇厚迷人(想吐)的' : '寶貝兒 ';
+                        finalWish = gender === '男' ? '富貴要人幫, 智慧無人幫, 憑你縱橫職場X十年, 早已洞察人性及具有從容應對各類屎坑情勢的智慧~祝你未來一樣輕輕鬆鬆工作, 完成公司不能取代之存在 XD' : '看到阿樂古靈精怪表情與發言, 就會想到 啊～不就是我那個一針見血精準犀利的好同學嗎? 看來媽媽的才智有同步到女兒身上 XD 祝福美女媽媽, 持續輸入, 阿樂未來大無限~';
                         break;
                     case '財富':
                         prefix = gender === '男' ? '(一日限定)改善社會風氣風靡萬千少女玉樹臨風的' : '寶貝兒 ';
-                        finalWish = gender === '男' ? '祝福你今年 錢跟財 不要只各擁有一半(貝戈戈的人生 母湯啊~)' : '祝福你財源滾滾來, 走在路上硬幣鈔票都會滾到你身旁！';
+                        finalWish = gender === '男' ? '祝福你今年 錢跟財 不要只各擁有一半 :D 下半年加薪目標房租*N (自己填)' : '這位銀行界精英, 我想生財之道用不著我祝福吧 XD 祝福妳天天算錢算到手酸(自己的) :D ';
                         break;
                     case '皆非':
                         finalWish = '哪來那麼多願望, 當我神燈精靈ni @@ ？';
@@ -230,9 +229,10 @@
                         finalWish = '未知的祝福';
                 }
 
-                birthdayMessage.textContent = `Hi, ${prefix} ${name}, ${finalWish}`;
+                // birthdayMessage.textContent = `Hi, ${prefix} <strong>${name}</strong>, ${finalWish}`; // 只會顯示純文字
+                birthdayMessage.innerHTML = `Hi, ${prefix} <strong>${name}</strong>, ${finalWish}`;
             } else {
-                // 若條件未滿足，隱藏文字區塊
+                // 隱藏文字區塊
                 birthdayMessage.style.display = 'none';
             }
         }
